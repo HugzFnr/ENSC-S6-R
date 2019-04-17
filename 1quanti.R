@@ -14,3 +14,6 @@ crawling_weeks <- as.numeric(unlist(dataSet["Crawling_Weeks"]))
 # Analyse
 summary(crawling_weeks) #général
 sd(crawling_weeks) #dispersion
+par(mfrow=c(1,2))
+hist(crawling_weeks)
+boxplot(crawling_weeks)
