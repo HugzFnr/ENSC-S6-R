@@ -14,30 +14,30 @@ View(dataSet)
 Age <- as.numeric(unlist(dataSet["Age"]))
 Crawling_Weeks <- as.numeric(unlist(dataSet["Crawling_Weeks"]))
 cr = paste("coefcorrelation = ", cor(Age,Crawling_Weeks))
-plot(Age,Crawling_Weeks,type = "p",main="corrélation entre l'âge et le temps de rampage",xlab="Age (jours)",ylab="Temps de rampage (semaines)",sub = cr)
-# le coefficient de corrélation est très faible, pas de corrélation linéaire
-# de plus sur le nuage de points on ne repère graphiquement aucun lien
+plot(Age,Crawling_Weeks,type = "p",main="corr?lation entre l'?ge et le temps de rampage",xlab="Age (jours)",ylab="Temps de rampage (semaines)",sub = cr)
+# le coefficient de corr?lation est tr?s faible, pas de corr?lation lin?aire
+# de plus sur le nuage de points on ne rep?re graphiquement aucun lien
 
 
 
-##------- on créé des groupes pour chaque catégorie d'enfants
+##------- on cr?? des groupes pour chaque cat?gorie d'enfants
 # groupe non Crawler et Crawler
 NonCrawl <- subset(dataSet, Crawling_Group == "0") 
 Crawler <- subset(dataSet, Crawling_Group == "1")
 
-##------- on refait l'étude précédente chez les crawlers pour la phase de familiarisation
+##------- on refait l'?tude pr?c?dente chez les crawlers pour la phase de familiarisation
 Crawler_Predrate_Fam_FullOccl <- as.numeric(unlist(Crawler["Predrate_Fam_FullOccl"]))
 Crawling_Weeks <- as.numeric(unlist(Crawler["Crawling_Weeks"]))
 cr = paste("coefcorrelation = ", cor(Crawler_Predrate_Fam_FullOccl,Crawling_Weeks))
-plot(Crawler_Predrate_Fam_FullOccl,Crawling_Weeks,type = "p",main="corrélation entre la prédiction et le temps de rampage",xlab="prédiction pourcentage",ylab="Temps de rampage (semaines)",sub = cr)
-# coefficient de corrélation de 0.511 ce qui est pas fou, et graphiquement pas de changements énormes
-# donc le temps de crawl ne semble pas vraiment influencer sur la prédiction
+plot(Crawler_Predrate_Fam_FullOccl,Crawling_Weeks,type = "p",main="corr?lation entre la pr?diction et le temps de rampage",xlab="pr?diction pourcentage",ylab="Temps de rampage (semaines)",sub = cr)
+# coefficient de corr?lation de 0.511 ce qui est pas fou, et graphiquement pas de changements ?normes
+# donc le temps de crawl ne semble pas vraiment influencer sur la pr?diction
 
-##------- on refait l'étude précédente entre pour la phase de tests
+##------- on refait l'?tude pr?c?dente entre pour la phase de tests
 Crawler_Predrate_Test_FullOccl <- as.numeric(unlist(Crawler["Predrate_Test_FullOccl"]))
 Crawler_Crawling_Weeks <- as.numeric(unlist(Crawler["Crawling_Weeks"]))
 cr = paste("coefcorrelation = ", cor(Crawler_Predrate_Test_FullOccl,Crawler_Crawling_Weeks))
-plot(Crawler_Predrate_Test_FullOccl,Crawler_Crawling_Weeks,type = "p",main="corrélation entre la prédiction et le temps de rampage",xlab="prédiction pourcentage",ylab="Temps de rampage (semaines)",sub = cr)
+plot(Crawler_Predrate_Test_FullOccl,Crawler_Crawling_Weeks,type = "p",main="corr?lation entre la pr?diction et le temps de rampage",xlab="pr?diction pourcentage",ylab="Temps de rampage (semaines)",sub = cr)
 
 
 
@@ -52,4 +52,5 @@ Crawler_Predrate_Fam_FullOccl <- as.numeric(unlist(Crawler["Predrate_Fam_FullOcc
 summary(Crawler_Predrate_Fam_FullOccl)
 print(paste("ecart-type = ",sd(Crawler_Predrate_Fam_FullOccl)))
 
-# On observe que les crawlers ont en moyenne une meilleure prévisions que les non crawlers
+t.test(NonCrawl_Predrate_Fam_FullOccl, alternative="less",mu=mean(Crawler_Predrate_Fam_FullOccl))
+# On observe que les crawlers ont en moyenne une meilleure pr?visions que les non crawlers confirmÃ© par le test de Student
