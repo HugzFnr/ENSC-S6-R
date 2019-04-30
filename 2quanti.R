@@ -50,3 +50,32 @@ abline(-0.745 , 1.020, col = 'red',lwd=2)
 
 
 
+## ------
+
+# Analyse Crawling_Weeks et Predrate_Fam_FullOccl
+## ------
+Predrate_Fam_FullOccl <- as.numeric(unlist(dataSet["Predrate_Fam_FullOccl"]))
+Crawling_Weeks <- as.numeric(unlist(dataSet["Crawling_Weeks"]))
+cr = paste("coefcorrelation = ", cor(Crawling_Weeks,Predrate_Fam_FullOccl))
+plot(Predrate_Fam_FullOccl,Crawling_Weeks,type = "p",main="correlation entre le temps de rampage et Predrate_Fam_FullOccl",xlab="temps de rampage (semaines)",ylab="Predrate_Fam_FullOccl",sub = cr,pch = 19)
+# le coefficient de correlation est tres élevé 0.918, forte correlation lineaire
+lm(Predrate_Fam_TarOccl ~ Predrate_Fam_FullOccl)
+#(Intercept)  Predrate_Fam_FullOccl  
+#-0.745                  1.020
+abline(-0.745 , 1.020, col = 'red',lwd=2)
+## Conclusion, pour la phase de familiarisation il y a une corrélation linéaire quasi parfaite entre 
+## ------
+
+# Analyse Crawling_Weeks et Predrate_Fam_FullOccl chez les Crawlers
+## ------
+Crawler_Predrate_Fam_FullOccl <- as.numeric(unlist(Crawler["Predrate_Fam_FullOccl"]))
+Crawler_Crawling_Weeks <- as.numeric(unlist(Crawler["Crawling_Weeks"]))
+cr = paste("coefcorrelation = ", cor(Crawler_Crawling_Weeks,Crawler_Predrate_Fam_FullOccl))
+plot(Crawler_Predrate_Fam_FullOccl,Crawler_Crawling_Weeks,type = "p",main="correlation entre le temps de rampage et Predrate_Fam_FullOccl",xlab="temps de rampage (semaines)",ylab="Predrate_Fam_FullOccl",sub = cr,pch = 19)
+# le coefficient de correlation est tres élevé 0.918, forte correlation lineaire
+lm(Predrate_Fam_TarOccl ~ Predrate_Fam_FullOccl)
+#(Intercept)  Predrate_Fam_FullOccl  
+#-0.745                  1.020
+abline(-0.745 , 1.020, col = 'red',lwd=2)
+## Conclusion, pour la phase de familiarisation il y a une corrélation linéaire quasi parfaite entre 
+
