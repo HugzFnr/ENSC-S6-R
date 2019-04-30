@@ -4,6 +4,7 @@
 #######################################
 
 # Initialisation
+install.packages('haven')
 library(haven)
 rm(list=ls())
 dataSet <- read_sav("Kubicek et al._JECP_DataSet.sav")
